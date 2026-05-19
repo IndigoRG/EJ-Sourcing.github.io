@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Property Investment & Sourcing</title>
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a2530; /* Dark Navy */
+            --secondary-color: #d4af37; /* Elegant Gold */
+            --text-color: #333333;
+            --bg-light: #f9f9f9;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--secondary-color);
+            font-weight: 600;
+
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+
+        }
+
+        .logo span {
+            color: white;
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+        }
+
+        /* Page Display Logic */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section (Home) */
+        .hero {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(rgba(26, 37, 48, 0.8), rgba(26, 37, 48, 0.8)), url('images/Home_Page_Website_Image.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: #b5952f;
+        }
+
+        /* Inner Page Headers */
+        .page-header {
+            background-color: var(--bg-light);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .page-header h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            font-weight: 300;
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-light);
+            padding: 40px 30px;
+            text-align: center;
+            border-top: 4px solid var(--secondary-color);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .text-muted {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">E&J <span>Sourcing Ltd</span></div>
+            <nav>
+                <ul id="nav-list">
+                    <li><a class="nav-link active" data-target="home">Home</a></li>
+                    <li><a class="nav-link" data-target="about">About</a></li>
+                    <li><a class="nav-link" data-target="sourcing">Sourcing</a></li>
+                    <li><a class="nav-link" data-target="sell">Sell your Property</a></li>
+                    <li><a class="nav-link" data-target="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home" class="page active">
+        <section class="hero">
+            <h1>Exclusive Off-Market Property Sourcing</h1>
+            <p></p>
+            <button class="btn" onclick="document.querySelector('[data-target=\'sourcing\']').click()">Discover Sourcing</button>
+        </section>
+
+        <section class="section container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color); font-size: 24px;">Strategic Property Sourcing for Investors, Developers & Landowners</h3>
+                    <p class="text-muted">We are deal makers and problem solvers.</p>
+                    <p class="text-muted">Our role sits between opportunity and capital—connecting the right investors with the right deals, while ensuring every opportunity is thoroughly vetted, packaged, and ready for decision-making.</p>
+                    <p class="text-muted">We understand what investors are looking for because we focus on the numbers, the exit strategy, and the real potential behind every property—not just the surface.</p>
+                </div>
+                <div>
+                    <img src="images/Home_Page_Website_Image.jpg" alt="About our company" style="width: 100%; height: auto; display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section container" style="background-color: var(--bg-light); padding: 80px 40px;">
+            <h2 class="section-title">Our Expertise</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Property Sourcing</h3>
+                    <p class="text-muted">More than just sourcing properties, we provide a complete deal-finding and acquisition service — saving our clients time, reducing risk, and giving them access to opportunities they would not typically find on their own.</p>
+                </div>
+                <div class="card">
+                    <h3>Selling & Valuation</h3>
+                    <p class="text-muted">Whether you are a first-time investor or an experienced portfolio builder, our goal is simple: to help you acquire the right property at the right price, with confidence.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="about" class="page">
+        <div class="page-header">
+            <h2>About Us</h2>
+        </div>
+        <section class="section container">
+            <div class="grid-2">
+            <div>
+                <img src="images/About_Us_Page_Image.jpg" alt="Our team at work" style="width: 100%; height: auto; display: block;">
+            </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color); font-size: 28px;">Our Mission & Vision</h3>
+                    <p class="text-muted">We are a specialist property sourcing and advisory firm focused on delivering high-quality residential and commercial opportunities to serious investors and developers.</p>
+                    <p class="text-muted">Operating across key UK markets, we source, structure, and present carefully selected deals that meet strict investment criteria—whether that’s strong rental yields, value-add potential, or long-term capital growth.</p>
+                    <p class="text-mutes">Our approach is built on access, discretion, and precision. We work closely with agents, developers, landowners, and private sellers to unlock opportunities that are often unavailable on the open market.</p>
+                    <ul style="margin-top: 20px; padding-left: 20px; color: #666; line-height: 1.8;">
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipiscing elit</li>
+                        <li>Sed do eiusmod tempor incididunt</li>
+                        <li>Ut labore et dolore magna aliqua</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="sourcing" class="page">
+        <div class="page-header">
+            <h2>What We Offer</h2>
+        </div>
+        <section class="section container">
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--primary-color);"></h3>
+            <p class="text-muted" style="text-align: center; max-width: 800px; margin: 0 auto 60px auto;">
+
+            
+            <div class="grid-2" style="margin-bottom: 40px;">
+                <div style="background: var(--bg-light); padding: 40px;">
+                    <h4 style="margin-bottom: 15px; color: var(--secondary-color);">Residential Property Sourcing</h4>
+                    <p class="text-muted">We source investment-grade residential opportunities including:</p>
+                    <ul style="margin-top: 20px; padding-left: 20px; color: #666; line-height: 1.8;">
+                        <li>Buy-to-let properties</li>
+                        <li>HMOs and high-yield assets</li>
+                        <li>Value-add refurbishment projects</li>
+                        <li>Below-market-value opportunities</li>
+                    </ul>
+
+                    <p class="text-muted">Each deal is analysed and presented with clear financials, comparables, and strategy.</p>
+                </div>
+                <div style="background: var(--bg-light); padding: 40px;">
+                    <h4 style="margin-bottom: 15px; color: var(--secondary-color);">Commercial Property & Development Sourcing</h4>
+                    <p class="text-muted">We work with developers and commercial investors to source:</p>
+                    <ul style="margin-top: 20px; padding-left: 20px; color: #666; line-height: 1.8;">
+                        <li>Commercial assets with strong income potential</li>
+                        <li>Mixed-use opportunities</li>
+                        <li>Development sites and land (including off-market opportunities)</li>
+                        <li>Repositioning and conversion projects</li>
+                    </ul>
+                    <p class="text-muted">Our focus is on opportunities with scale, margin, and clear exit strategies.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="sell" class="page">
+        <div class="page-header">
+            <h2>Sell Your Property</h2>
+        </div>
+        <section class="section container">
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Why Sell With Us?</h3>
+                    <p class="text-muted">We offer a more strategic and targeted approach to selling property.</p>
+                    <p class="text-muted">Rather than relying solely on the open market, we connect your asset directly with qualified investors actively looking to deploy capital.</p>
+                    <ul style="margin-top: 20px; padding-left: 20px; color: #666; line-height: 1.8;">
+                        <li>Access to a network of serious buyers and developers</li>
+                        <li>Discreet, off-market transactions where required</li>
+                        <li>Faster, more efficient deal progression</li>
+                        <li>Strong understanding of how to position your asset for maximum value</li>
+                    </ul>
+                    <div></div>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Our Process</h3>
+                    <div style="margin-top: 30px; padding: 20px; border-left: 4px solid var(--secondary-color); background: var(--bg-light);">
+                        <strong>Deal Assessment:</strong> We review the property, location, and financials to determine its true investment potential.<br><br>
+                        <strong>Deal Structuring:</strong> We position the opportunity with a clear strategy—whether that’s yield, development, or resale.<br><br>
+                        <strong>Investor Matching:</strong> We present the deal to targeted investors within our network who are actively seeking similar opportunities.<br><br>
+                        <strong>Deal Packaging:</strong> Each opportunity is professionally packaged with key data, analysis, and supporting information.<br><br>
+                        <strong>Completion Support:</strong> We assist throughout the process, ensuring a smooth transaction from introduction to completion.
+                    </div>
+                </div>
+                <div style="background: #ffffff; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-radius: 8px;">
+                    <h3 style="margin-bottom: 20px; text-align: center;">Request a Valuation</h3>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="6f86c7b3-c8e3-4ed6-a515-4e1ae655ee4b">
+                        <input type="hidden" name="subject" value="New Valuation Request">
+
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="e.g. john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Property Postcode</label>
+                            <input type="text" name="postcode" placeholder="e.g. W1J 7BU" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Property Type</label>
+                            <select name="property_type" required>
+                                <option value="">Select Property Type...</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="land">Land</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Submit Details</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="contact" class="page">
+        <div class="page-header">
+            <h2>Contact Us</h2>
+        </div>
+        <section class="section container">
+            <div class="grid-2">
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">Get In Touch</h3>
+                    <p class="text-muted" style="margin-bottom: 30px;">Contact Us for any inquiries you may have.</p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--secondary-color);">Telephone:</strong><br>
+                        <span class="text-muted">+44 (0) 7943 270 859</span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--secondary-color);">Email:</strong><br>
+                        <span class="text-muted"> contact@ejsourcing.co.uk</span>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <strong style="color: var(--secondary-color);">Location:</strong><br>
+                        <span class="text-muted">London, United Kingdom</span>
+                    </div>
+                </div>
+                
+                <div style="background: var(--bg-light); padding: 40px; border-radius: 8px;">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="6f86c7b3-c8e3-4ed6-a515-4e1ae655ee4b">
+                        <input type="hidden" name="subject" value="New Contact Message">
+
+                        <div class="form-group">
+                            <label>Your Name</label>
+                                <input type="text" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Your Email</label>
+                            <input type="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: var(--secondary-color); font-weight: normal; margin-bottom: 10px;">E&J Sourcing Ltd</h3>
+                <p>Exclusive Off-Market Sourcing & Management</p>
+            </div>
+            <p>&copy; 2026 Property Consultancy. All rights reserved. | <a href="#" style="color: #999; text-decoration: none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and pages
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    pages.forEach(p => p.classList.remove('active'));
+
+                    // Add active class to clicked link
+                    const targetId = link.getAttribute('data-target');
+                    link.classList.add('active');
+                    
+                    // Show corresponding page
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

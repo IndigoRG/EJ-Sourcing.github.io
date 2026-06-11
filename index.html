@@ -245,6 +245,50 @@
             color: #999;
             font-size: 14px;
         }
+        
+        /* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    /* 1. Fix the Header */
+    .header-content {
+        flex-direction: column; /* Stacks logo above the menu */
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap; /* Allows links to move to a second line if needed */
+    }
+
+    nav a {
+        font-size: 12px; /* Smaller font for small screens */
+    }
+
+    /* 2. Fix the Grids (Forms, Cards, and Columns) */
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr; /* Forces 1 column instead of 2 or 3 */
+        gap: 30px;
+    }
+
+    /* 3. Adjust Typography and Padding */
+    .hero h1 {
+        font-size: 28px; /* Prevents hero text from being cut off */
+    }
+
+    .section {
+        padding: 40px 0; /* Reduces whitespace on mobile */
+    }
+
+    .page-header h2 {
+        font-size: 26px;
+    }
+
+    /* 4. Ensure images and forms fill the width */
+    .form-container, .card {
+        padding: 20px;
+    }
+
     </style>
 </head>
 <body>
@@ -316,12 +360,7 @@
                     <p class="text-muted">We are a specialist property sourcing and advisory firm focused on delivering high-quality residential and commercial opportunities to serious investors and developers.</p>
                     <p class="text-muted">Operating across key UK markets, we source, structure, and present carefully selected deals that meet strict investment criteria—whether that’s strong rental yields, value-add potential, or long-term capital growth.</p>
                     <p class="text-mutes">Our approach is built on access, discretion, and precision. We work closely with agents, developers, landowners, and private sellers to unlock opportunities that are often unavailable on the open market.</p>
-                    <ul style="margin-top: 20px; padding-left: 20px; color: #666; line-height: 1.8;">
-                        <li>Lorem ipsum dolor sit amet</li>
-                        <li>Consectetur adipiscing elit</li>
-                        <li>Sed do eiusmod tempor incididunt</li>
-                        <li>Ut labore et dolore magna aliqua</li>
-                    </ul>
+
                 </div>
             </div>
         </section>
